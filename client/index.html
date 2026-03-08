@@ -1,45 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SnipUrl</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
     <script type="module" src="./dist/index.js" defer></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <div class="logo">SnipUrl</div>
-        <nav>
-            <a href="index.html" class="nav-link">home</a>
-            <a href="about.html" class="nav-link">about</a>
-        </nav>
+      <div class="logo">SnipUrl</div>
+      <nav>
+        <a href="index.html" class="nav-link">home</a>
+        <a href="about.html" class="nav-link">about</a>
+      </nav>
     </header>
 
     <main>
-        <div class="input-container">
-            <input type="text" id="url-input" placeholder="enter a long url" autocomplete="off">
-            <button id="shorten-btn" aria-label="Shorten">
-                <i data-lucide="arrow-right"></i>
-            </button>
-        </div>
-        <p class="hint">press enter to snip url</p>
+      <div class="input-container">
+        <input
+          type="text"
+          id="url-input"
+          placeholder="enter a long url"
+          autocomplete="off"
+        />
+        <button id="shorten-btn" aria-label="Shorten">
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+      <p class="hint">press enter to snip url</p>
 
-        <div id="result-container" class="result-container hidden">
-            <a href="#" id="short-url" target="_blank" class="short-link">snip.url/xd34f</a>
-            <button id="copy-btn" title="Copy to clipboard">
-                <i data-lucide="copy"></i>
-            </button>
-        </div>
+      <div id="result-container" class="result-container hidden">
+        <a href="#" id="short-url" target="_blank" class="short-link"></a>
+        <button id="copy-btn" title="Copy to clipboard">
+          <i data-lucide="copy"></i>
+        </button>
+      </div>
     </main>
 
-    <script src="index.ts" type="module"></script>
+    <footer>
+      <a
+        href="https://github.com/fouadbuilds/snipUrl"
+        class="nav-link"
+        target="_blank"
+        ><i data-lucide="github"></i
+      ></a>
+    </footer>
+
+    <script type="module" src="./dist/index.js" defer></script>
     <script>
-        
-        lucide.createIcons();
+      lucide.createIcons();
     </script>
-</body>
+  </body>
 </html>
