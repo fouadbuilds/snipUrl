@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,             // FIX: Solves the Express import error
+    "allowSyntheticDefaultImports": true, // FIX: Helper for default imports
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "sourceMap": true,
+    "declaration": true
+  }
+}
