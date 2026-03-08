@@ -52,7 +52,7 @@ main {
   align-items: center;
   width: 100%;
   max-width: 600px;
-  padding-bottom: 15vh; /* Visual balance */
+  padding-bottom: 15vh; 
 }
 
 /* Input Area */

@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
   res.send('This is the Homepage')
 })
 
-app.use('/api', apiRoutes)
+// Routes
+app.use('/api', apiRoutes)   // for POST /api/shorten
+app.use('/', apiRoutes)      // for GET /:shortCode
 
 
 
