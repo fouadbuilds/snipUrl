@@ -1,6 +1,7 @@
 import express from "express";
 import cors from 'cors'
 import apiRoutes from './routes/url.routes.js'
+import connectDB from "./db/database.js";
 
 
 const app = express();
@@ -18,7 +19,8 @@ app.use('/api', apiRoutes)
 
 
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`)
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`)
+  })
 })
