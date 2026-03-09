@@ -1,5 +1,5 @@
 // 1. Element Selectors
-const urlInput = document.getElementById('url-input') as HTMLInputElement;
+const urlInput = document.getElementById("url-input") as HTMLInputElement;
 const shortenBtn = document.getElementById("shorten-btn") as HTMLButtonElement;
 const resultContainer = document.getElementById(
   "result-container",
@@ -33,8 +33,6 @@ const handleCopy = async (): Promise<void> => {
   }
 };
 
-
-
 // Trigger output when clicking the arrow
 shortenBtn.addEventListener("click", async () => {
   const longUrl: string = urlInput.value;
@@ -42,11 +40,18 @@ shortenBtn.addEventListener("click", async () => {
   if (longUrl !== "") {
     try {
       const data = await postLongUrl(longUrl);
-      shortUrlLink.textContent = `http://localhost:3000/${data.data.shortUrl}`;
-      shortUrlLink.href = `http://localhost:3000/${data.data.shortUrl}`
-      resultContainer.classList.remove("hidden");
+
+      if (!data.success) {
+        shortUrlLink.textContent = `${data.message}`;
+        shortUrlLink.removeAttribute('href')
+        resultContainer.classList.remove("hidden");
+      } else {
+        shortUrlLink.textContent = `http://localhost:3000/${data.data.shortUrl}`;
+        shortUrlLink.href = `http://localhost:3000/${data.data.shortUrl}`;
+        resultContainer.classList.remove("hidden");
+      }
     } catch (error) {
-      console.error("Failed to shorten url:", error);
+      console.error("Failed to shorten:", error);
       shortUrlLink.textContent = "Error!";
     }
   }
@@ -59,9 +64,16 @@ urlInput.addEventListener("keypress", async (e: KeyboardEvent) => {
 
     try {
       const data = await postLongUrl(longUrl);
-      shortUrlLink.textContent = `http://localhost:3000/${data.data.shortUrl}`;
-      shortUrlLink.href = `http://localhost:3000/${data.data.shortUrl}`
-      resultContainer.classList.remove("hidden");
+
+      if (!data.success) {
+        shortUrlLink.textContent = `${data.message}`;
+        shortUrlLink.removeAttribute('href')
+        resultContainer.classList.remove("hidden");
+      } else {
+        shortUrlLink.textContent = `http://localhost:3000/${data.data.shortUrl}`;
+        shortUrlLink.href = `http://localhost:3000/${data.data.shortUrl}`;
+        resultContainer.classList.remove("hidden");
+      }
     } catch (error) {
       console.error("Failed to shorten:", error);
       shortUrlLink.textContent = "Error!";

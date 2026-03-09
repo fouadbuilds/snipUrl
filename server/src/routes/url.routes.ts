@@ -2,12 +2,18 @@ import { Router } from "express";
 import mongoose from "mongoose";
 import Url from "../db/Url.js";
 import { convertToBase62, decodeBase62 } from "../utils/urlConversion.js";
+import isUrlValid from "../utils/validateUrl.js";
 
 const router = Router();
 
 router.post("/shorten", async (req, res) => {
   try {
     const { longUrl } = req.body;
+
+    if (!isUrlValid(longUrl)) {
+      return res.status(400).json({ success: false, message: "Invalid Url" });
+    }
+
     const newEntry = new Url({ longUrl });
     // save to mongo
     const savedEntry = await newEntry.save();
