@@ -4,7 +4,9 @@
     "outDir": "./dist",
     "rootDir": "./",
     "lib": ["ESNext"],
-    "types": ["node"]
+    "types": ["node"],
+    "typeRoots": ["../node_modules/@types", "./node_modules/@types"]
+
   },
   "include": ["**/*"]
 }
