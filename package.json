@@ -4,6 +4,8 @@
   "description": "A simple Url Shortener",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --project server/tsconfig.json",
+    "start": "node server/dist/server.js",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "nodemon --exec tsx server/src/server.ts",
     "dev:client": "tsc --watch --project client/tsconfig.json",
