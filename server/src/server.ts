@@ -1,7 +1,10 @@
 import express from "express";
 import cors from 'cors'
-import apiRoutes from './src/routes/url.routes.js'
-import connectDB from "./src/db/database.js";
+import apiRoutes from './routes/url.routes.js'
+import connectDB from "./db/database.js";
+import { fileURLToPath } from 'url'
+import path from 'path'
+
 
 
 const app = express();
@@ -10,9 +13,9 @@ app.use(cors())
 app.use(express.json());
 
 
-app.get('/', (req, res) => {
-  res.send('This is the Homepage')
-})
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+app.use(express.static(path.join(__dirname, '../../client')))
+
 
 // Routes
 app.use('/api', apiRoutes)   // for POST /api/shorten
