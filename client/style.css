@@ -52,7 +52,7 @@ main {
   align-items: center;
   width: 100%;
   max-width: 600px;
-  padding-bottom: 15vh; 
+  padding-bottom: 15vh;
 }
 
 /* Input Area */
@@ -157,7 +157,9 @@ button:hover {
   stroke: currentColor;
 }
 
-footer {
-    margin-bottom: 2rem;
+/* fix to bottom */
+footer { 
+  position: fixed;
+  bottom: 20px; /* Distance from the bottom */
+  z-index: 1000; /* Keeps it above other elements */
 }
-

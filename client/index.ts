@@ -8,22 +8,6 @@ const shortUrlLink = document.getElementById("short-url") as HTMLAnchorElement;
 const copyBtn = document.getElementById("copy-btn") as HTMLButtonElement;
 import { postLongUrl } from "./api.js";
 
-// /**
-//  * Updates the UI to show the shortened URL result
-//  * @param shortUrl - The string to display and link to
-//  */
-// const displayOutput = (shortUrl: string): void => {
-
-//   // Set the link text and the actual href destination
-//   shortUrlLink.textContent = shortUrl;
-//   shortUrlLink.href = shortUrl.startsWith("http")
-//     ? shortUrl
-//     : `https://${shortUrl}`;
-
-//   // Reveal the container
-//   resultContainer.classList.remove("hidden");
-// };
-
 /**
  * Handles the copy-to-clipboard functionality with visual feedback
  */
@@ -49,7 +33,7 @@ const handleCopy = async (): Promise<void> => {
   }
 };
 
-// 2. Event Listeners
+
 
 // Trigger output when clicking the arrow
 shortenBtn.addEventListener("click", async () => {
@@ -58,7 +42,8 @@ shortenBtn.addEventListener("click", async () => {
   if (longUrl !== "") {
     try {
       const data = await postLongUrl(longUrl);
-      shortUrlLink.textContent = data.message;
+      shortUrlLink.textContent = `http://localhost:3000/${data.data.shortUrl}`;
+      shortUrlLink.href = `http://localhost:3000/${data.data.shortUrl}`
       resultContainer.classList.remove("hidden");
     } catch (error) {
       console.error("Failed to shorten url:", error);
@@ -74,7 +59,8 @@ urlInput.addEventListener("keypress", async (e: KeyboardEvent) => {
 
     try {
       const data = await postLongUrl(longUrl);
-      shortUrlLink.textContent = data.message;
+      shortUrlLink.textContent = `http://localhost:3000/${data.data.shortUrl}`;
+      shortUrlLink.href = `http://localhost:3000/${data.data.shortUrl}`
       resultContainer.classList.remove("hidden");
     } catch (error) {
       console.error("Failed to shorten:", error);

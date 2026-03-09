@@ -7,7 +7,7 @@ export async function postLongUrl(longUrl: string) {
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({url: longUrl}),
+      body: JSON.stringify({longUrl: longUrl}),
     });
     const result = await response.json();
 
@@ -16,5 +16,7 @@ export async function postLongUrl(longUrl: string) {
     console.error(`Error sending data: ${error}`);
   }
 }
+
+
 
 
